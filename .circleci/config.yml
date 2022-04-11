@@ -12,8 +12,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "say hello"
-        command: "echo Hello"
+          name: "say hello"
+          command: "echo Hello"
   
   print_world:
     docker:
@@ -21,8 +21,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "say world"
-        command: "echo world"
+          name: "say world"
+          command: "echo world"
 workflows:
   # Name the workflow "welcome"
   welcome:
@@ -30,4 +30,4 @@ workflows:
     jobs:
       - print_hello
       - print_world:
-        requires: [print_hello]
+          requires: [print_hello]
