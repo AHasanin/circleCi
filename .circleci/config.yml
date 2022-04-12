@@ -13,7 +13,7 @@ jobs:
       - checkout
       - run:
           name: "say hello"
-          command: "echo Hello"
+          command: "echo Hello $MY_NAME "
   
   print_world:
     docker:
