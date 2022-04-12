@@ -14,18 +14,21 @@ jobs:
       - run:
           name: "say hello"
           command: echo "Hello From circle ci " > output.txt
-      - run:
-          name: "run pwd"
-          command: echo "$PWD"
+      - persist_to_workspace:
+          root: /home/circleci/project
+          paths:
+            - output.txt
   
   print_world:
     docker:
       - image: circleci/node:13.8.0
     steps:
       - checkout
+      - attach_workspace:
+          at: /home/circleci/project
       - run:
           name: "say world"
-          command: "echo world"
+          command: cat output.txt
 workflows:
   # Name the workflow "welcome"
   welcome:
